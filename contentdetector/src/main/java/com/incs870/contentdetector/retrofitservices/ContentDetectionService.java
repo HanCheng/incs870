@@ -6,6 +6,6 @@ import retrofit2.http.POST;
 
 public interface ContentDetectionService {
 
-    @POST
+    @POST()
     Completable sendContentData(@Body String requestContent);
 }
