@@ -67,7 +67,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.incs870.contentdetector'
                 artifactId = 'contentdetector'
-                version = '0.1.1'
+                version = '0.1.4'
             }
 
         }
