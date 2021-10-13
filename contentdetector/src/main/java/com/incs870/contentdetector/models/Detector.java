@@ -1,4 +1,4 @@
-package com.incs870.contentdetector.retrofitservices.models;
+package com.incs870.contentdetector.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
