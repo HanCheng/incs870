@@ -170,14 +170,22 @@ public class CallToAction {
         final ContentDetector contentDetector = ContentDetector.getInstance();
         return requestResponseFromIp(contentDetector.getLocationClient().getLocationService())
                 .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .observeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(geoResponse -> {
                     Detector newDetector =  new Detector(detector);
                     newDetector.setCity(geoResponse.getCity());
                     newDetector.setProvince(geoResponse.getRegionName());
                     newDetector.setZip(geoResponse.getZip());
-                    contentDetector.getRestClient().getContentService().sendContentData(newDetector);
+                    contentDetector.getRestClient().getContentService()
+                            .sendContentData(newDetector)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(saResponse -> {
+                                Log.e("", saResponse.toString());
+                            },
+                                    error -> {
+                                        Log.e("", "Error on SA response");
+                                    });
                 }, error -> {
                     Log.e("", "Error on requesting IP address");
                 });
