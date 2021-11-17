@@ -27,6 +27,12 @@ public class Detector {
     private String city;
     @JsonProperty("zip")
     private String zip;
+    @JsonProperty("country")
+    private String country;
+    @JsonProperty("gender")
+    private String gender;
+    @JsonProperty("age")
+    private int age;
 
     public Detector() {
     }
@@ -77,6 +83,30 @@ public class Detector {
 
     public Builder newBuilder() {
         return new Builder(this);
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     static class Builder {
